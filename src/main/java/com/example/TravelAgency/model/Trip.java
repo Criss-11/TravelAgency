@@ -5,7 +5,7 @@ import javax.validation.constraints.NotBlank;
 
 @Entity
 @Table(name = "trips")
- class Trip {
+public class Trip {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
