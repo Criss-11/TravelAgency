@@ -35,6 +35,13 @@ public class TripController {
         return ResponseEntity.ok(repository.findAll(page).getContent());
     }
 
+    @GetMapping("/tasks/{id}")
+    ResponseEntity<Trip>readTrip(@PathVariable int id){
+        return repository.findById(id)
+                .map(ResponseEntity::ok)
+                .orElse(ResponseEntity.notFound().build());
+    }
+
     @PutMapping("/trips/{id}")
     ResponseEntity<?> updateTrip(@PathVariable int id, @RequestBody @Valid Trip toUpdate){
         if(!repository.existsById(id)){
@@ -44,4 +51,5 @@ public class TripController {
         repository.save(toUpdate);
         return ResponseEntity.noContent().build();
     }
+
 }
