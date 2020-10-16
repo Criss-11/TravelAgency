@@ -1,13 +1,21 @@
 package com.example.TravelAgency.model;
 
-import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.repository.query.Param;
-import org.springframework.stereotype.Repository;
 
+import java.net.ContentHandler;
 import java.util.List;
+import java.util.Optional;
 
-@Repository
-public interface TripRepository extends JpaRepository<Trip, Integer> {
+public interface TripRepository {
+    List<Trip> findAll();
+
+    Optional<Trip> findById(Integer id);
+
+    Trip save(Trip entity);
+
+    Page<Trip> findAll(Pageable page);
+
     List<Trip> findByAvailable(@Param("state") boolean available);
 }
-

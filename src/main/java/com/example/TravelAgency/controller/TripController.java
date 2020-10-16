@@ -2,6 +2,7 @@ package com.example.TravelAgency.controller;
 
 
 import com.example.TravelAgency.model.Trip;
+import com.example.TravelAgency.model.SqlTripRepository;
 import com.example.TravelAgency.model.TripRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
