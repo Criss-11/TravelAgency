@@ -2,15 +2,15 @@ package com.example.TravelAgency.controller;
 
 
 import com.example.TravelAgency.model.Trip;
-import com.example.TravelAgency.model.SqlTripRepository;
+
 import com.example.TravelAgency.model.TripRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.List;
 
 
@@ -33,5 +33,15 @@ public class TripController {
     ResponseEntity<List<Trip>> readAllTrips(Pageable page) {
         logger.info("Custom page");
         return ResponseEntity.ok(repository.findAll(page).getContent());
+    }
+
+    @PutMapping("/trips/{id}")
+    ResponseEntity<?> updateTrip(@PathVariable int id, @RequestBody @Valid Trip toUpdate){
+        if(!repository.existsById(id)){
+            return ResponseEntity.notFound().build();
+        }
+        toUpdate.setId(id);
+        repository.save(toUpdate);
+        return ResponseEntity.noContent().build();
     }
 }

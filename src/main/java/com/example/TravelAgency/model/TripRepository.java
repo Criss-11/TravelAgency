@@ -13,6 +13,8 @@ public interface TripRepository {
 
     Optional<Trip> findById(Integer id);
 
+    boolean existsById(Integer id);
+
     Trip save(Trip entity);
 
     Page<Trip> findAll(Pageable page);
