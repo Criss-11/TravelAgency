@@ -11,6 +11,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.net.URI;
 import java.util.List;
 
 
@@ -21,6 +22,12 @@ public class TripController {
 
     public TripController(TripRepository repository) {
         this.repository = repository;
+    }
+
+    @PostMapping("/trips")
+    ResponseEntity<Trip> createTrip(@RequestBody @Valid Trip toCreate){
+        Trip result = repository.save(toCreate);
+        return ResponseEntity.created(URI.create("/"+result.getId())).body(result);
     }
 
     @GetMapping(value= "/trips", params = {"!sort", "!page", "!size"})
@@ -35,7 +42,7 @@ public class TripController {
         return ResponseEntity.ok(repository.findAll(page).getContent());
     }
 
-    @GetMapping("/tasks/{id}")
+    @GetMapping("/trips/{id}")
     ResponseEntity<Trip>readTrip(@PathVariable int id){
         return repository.findById(id)
                 .map(ResponseEntity::ok)
