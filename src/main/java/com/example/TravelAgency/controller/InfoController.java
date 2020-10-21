@@ -1,5 +1,6 @@
 package com.example.TravelAgency.controller;
 
+import com.example.TravelAgency.model.TaskConfigurationProperties;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.autoconfigure.jdbc.DataSourceProperties;
@@ -9,10 +10,13 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class InfoController {
 
-    @Autowired
     private DataSourceProperties dataSource;
-    @Value("${my.prop}")
-    private String myProp;
+    private TaskConfigurationProperties myProp;
+
+    public InfoController(DataSourceProperties dataSource, TaskConfigurationProperties myProp) {
+        this.dataSource = dataSource;
+        this.myProp = myProp;
+    }
 
     @GetMapping("/info/url")
     String url(){
@@ -20,7 +24,7 @@ public class InfoController {
     }
 
     @GetMapping("/info/prop")
-    String myProp(){
-        return myProp;
+    boolean myProp(){
+        return myProp.isAllowMultipleTripsFromTemplate();
     }
 }
