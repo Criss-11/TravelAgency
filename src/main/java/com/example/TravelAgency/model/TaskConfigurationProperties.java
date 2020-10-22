@@ -6,14 +6,26 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 @ConfigurationProperties("trip")
 public class TaskConfigurationProperties {
-    private boolean allowMultipleTripsFromTemplate;
+    private Template template;
 
-    public boolean isAllowMultipleTripsFromTemplate() {
-        return allowMultipleTripsFromTemplate;
+    public Template getTemplate() {
+        return template;
     }
 
-    public void setAllowMultipleTripsFromTemplate(boolean allowMultipleTripsFromTemplate) {
-        this.allowMultipleTripsFromTemplate = allowMultipleTripsFromTemplate;
+    public void setTemplate(Template template) {
+        this.template = template;
+    }
+
+    public static class Template{
+        private boolean allowMultipleTrips;
+
+        public boolean isAllowMultipleTrips() {
+            return allowMultipleTrips;
+        }
+
+        public void setAllowMultipleTrips(boolean allowMultipleTrips) {
+            this.allowMultipleTrips = allowMultipleTrips;
+        }
     }
 }
 

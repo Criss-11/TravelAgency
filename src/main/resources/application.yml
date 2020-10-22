@@ -4,6 +4,6 @@ spring:
     path: '/console'
   datasource:
     url: 'jdbc:h2:file:/D:/Shop1/TravelAgency/TravelAgency/db'
-trip.allowMultipleTripsFromTemplate: false
+trip.template.allowMultipleTrips: false
 
 
