@@ -19,5 +19,5 @@ public interface TripRepository {
 
     Page<Trip> findAll(Pageable page);
 
-    List<Trip> findByAvailable(@Param("state") boolean available);
+    List<Trip> findByAvailable( boolean available);
 }
