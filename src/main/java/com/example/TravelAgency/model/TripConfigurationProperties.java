@@ -5,7 +5,7 @@ import org.springframework.context.annotation.Configuration;
 
 @Configuration
 @ConfigurationProperties("trip")
-public class TaskConfigurationProperties {
+public class TripConfigurationProperties {
     private Template template;
 
     public Template getTemplate() {

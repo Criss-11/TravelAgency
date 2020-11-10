@@ -1,8 +1,6 @@
 package com.example.TravelAgency.controller;
 
-import com.example.TravelAgency.model.TaskConfigurationProperties;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
+import com.example.TravelAgency.model.TripConfigurationProperties;
 import org.springframework.boot.autoconfigure.jdbc.DataSourceProperties;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -11,9 +9,9 @@ import org.springframework.web.bind.annotation.RestController;
 public class InfoController {
 
     private DataSourceProperties dataSource;
-    private TaskConfigurationProperties myProp;
+    private TripConfigurationProperties myProp;
 
-    public InfoController(DataSourceProperties dataSource, TaskConfigurationProperties myProp) {
+    public InfoController(DataSourceProperties dataSource, TripConfigurationProperties myProp) {
         this.dataSource = dataSource;
         this.myProp = myProp;
     }
