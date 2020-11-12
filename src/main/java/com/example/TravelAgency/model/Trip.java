@@ -4,6 +4,7 @@ import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
 import java.time.LocalDateTime;
 
+
 @Entity
 @Table(name = "trips")
 public class Trip {
@@ -16,7 +17,15 @@ public class Trip {
     private String description;
     private int price;
     private boolean available;
-    private LocalDateTime departureDate;
+    private LocalDateTime departure;
+
+    public LocalDateTime getDeparture() {
+        return departure;
+    }
+
+    public void setDeparture(LocalDateTime departure) {
+        this.departure = departure;
+    }
 
     public Trip() {
     }

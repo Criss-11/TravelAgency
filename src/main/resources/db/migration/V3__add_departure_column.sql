@@ -1,0 +1,1 @@
+alter table trips add column departure datetime null;
