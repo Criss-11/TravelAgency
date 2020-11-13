@@ -51,14 +51,19 @@ public class TripController {
     }
 
     @PutMapping("/trips/{id}")
-    ResponseEntity<?> updateTrip(@PathVariable int id, @RequestBody @Valid Trip toUpdate){
-        if(!repository.existsById(id)){
+    ResponseEntity<?> updateTrip(@PathVariable int id, @RequestBody @Valid Trip toUpdate) {
+        if (!repository.existsById(id)) {
             return ResponseEntity.notFound().build();
         }
-        toUpdate.setId(id);
-        repository.save(toUpdate);
+        repository.findById(id)
+                .ifPresent(trip -> {
+                    trip.updateFrom(toUpdate);
+                    repository.save(trip);
+                });
+
         return ResponseEntity.noContent().build();
     }
+
     @Transactional
     @PatchMapping("/trips/{id}")
     public ResponseEntity<?> toggleTrip(@PathVariable int id){

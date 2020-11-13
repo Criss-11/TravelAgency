@@ -18,6 +18,8 @@ public class Trip {
     private int price;
     private boolean available;
     private LocalDateTime departure;
+    private LocalDateTime createdOn;
+    private LocalDateTime updatedOn;
 
     public LocalDateTime getDeparture() {
         return departure;
@@ -34,7 +36,7 @@ public class Trip {
         return id;
     }
 
-    public void setId(int id) {
+    void setId(int id) {
         this.id = id;
     }
 
@@ -68,5 +70,20 @@ public class Trip {
 
     public void setAvailable(boolean available) {
         this.available = available;
+    }
+
+    public void updateFrom(Trip source){
+        description=source.description;
+        available= source.available;
+        departure= source.departure;
+    }
+
+    @PrePersist
+    void prePersit(){
+        createdOn=LocalDateTime.now();
+    }
+    @PreUpdate
+    void preMerge(){
+        updatedOn=LocalDateTime.now();
     }
 }
