@@ -7,7 +7,7 @@ import java.time.LocalDateTime;
 
 @Entity
 @Table(name = "trips")
-public class Trip {
+public class Trip extends BaseAuditableEntity{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
@@ -18,8 +18,6 @@ public class Trip {
     private int price;
     private boolean available;
     private LocalDateTime departure;
-    private LocalDateTime createdOn;
-    private LocalDateTime updatedOn;
 
     public LocalDateTime getDeparture() {
         return departure;
@@ -78,12 +76,4 @@ public class Trip {
         departure= source.departure;
     }
 
-    @PrePersist
-    void prePersit(){
-        createdOn=LocalDateTime.now();
-    }
-    @PreUpdate
-    void preMerge(){
-        updatedOn=LocalDateTime.now();
-    }
 }
