@@ -7,7 +7,7 @@ import java.time.LocalDateTime;
 
 @Entity
 @Table(name = "trips")
-public class Trip extends BaseAuditableEntity{
+public class Trip {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
@@ -18,6 +18,8 @@ public class Trip extends BaseAuditableEntity{
     private int price;
     private boolean available;
     private LocalDateTime departure;
+    @Embedded
+    private Audit audit= new Audit();
 
     public LocalDateTime getDeparture() {
         return departure;
