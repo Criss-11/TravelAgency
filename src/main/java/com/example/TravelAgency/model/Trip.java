@@ -21,8 +21,17 @@ public class Trip {
     private LocalDateTime departure;
     @Embedded
     private Audit audit= new Audit();
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "trip")
-    private Set<Trip> trips;
+    @ManyToOne
+    @JoinColumn(name = "additional_service_id")
+    private TripAdditionalServices additionalServices;
+
+    public TripAdditionalServices getAdditionalServices() {
+        return additionalServices;
+    }
+
+    public void setAdditionalServices(TripAdditionalServices additionalServices) {
+        this.additionalServices = additionalServices;
+    }
 
     public LocalDateTime getDeparture() {
         return departure;
@@ -73,14 +82,6 @@ public class Trip {
 
     public void setAvailable(boolean available) {
         this.available = available;
-    }
-
-    public Set<Trip> getTrips() {
-        return trips;
-    }
-
-    public void setTrips(Set<Trip> trips) {
-        this.trips = trips;
     }
 
     public void updateFrom(Trip source){

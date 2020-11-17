@@ -2,7 +2,7 @@ package com.example.TravelAgency.model;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
-
+import java.util.Set;
 
 
 @Entity
@@ -15,18 +15,16 @@ public class TripAdditionalServices {
     private String description;
     private int price;
     private boolean available;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "additionalServices")
+    private Set<Trip> trips;
 
-    public Trip getTrip() {
-        return trip;
+    public Set<Trip> getTrips() {
+        return trips;
     }
 
-    public void setTrip(Trip trip) {
-        this.trip = trip;
+    public void setTrips(Set<Trip> trips) {
+        this.trips = trips;
     }
-
-    @ManyToOne
-    @JoinColumn(name = "additional_service_id")
-    private Trip trip;
 
     public TripAdditionalServices() {
     }
