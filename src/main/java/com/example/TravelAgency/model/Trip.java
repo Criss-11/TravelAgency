@@ -3,6 +3,7 @@ package com.example.TravelAgency.model;
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
 import java.time.LocalDateTime;
+import java.util.Set;
 
 
 @Entity
@@ -20,6 +21,8 @@ public class Trip {
     private LocalDateTime departure;
     @Embedded
     private Audit audit= new Audit();
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "trip")
+    private Set<Trip> trips;
 
     public LocalDateTime getDeparture() {
         return departure;
@@ -72,10 +75,19 @@ public class Trip {
         this.available = available;
     }
 
+    public Set<Trip> getTrips() {
+        return trips;
+    }
+
+    public void setTrips(Set<Trip> trips) {
+        this.trips = trips;
+    }
+
     public void updateFrom(Trip source){
         description=source.description;
         available= source.available;
         departure= source.departure;
+
     }
 
 }

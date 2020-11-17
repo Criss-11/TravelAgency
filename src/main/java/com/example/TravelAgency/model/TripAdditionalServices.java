@@ -15,6 +15,15 @@ public class TripAdditionalServices {
     private String description;
     private int price;
     private boolean available;
+
+    public Trip getTrip() {
+        return trip;
+    }
+
+    public void setTrip(Trip trip) {
+        this.trip = trip;
+    }
+
     @ManyToOne
     @JoinColumn(name = "additional_service_id")
     private Trip trip;
