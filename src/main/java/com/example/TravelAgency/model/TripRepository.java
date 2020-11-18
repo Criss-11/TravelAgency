@@ -17,6 +17,8 @@ public interface TripRepository {
 
     Trip save(Trip entity);
 
+    boolean existsByAvailableIsFalseAndAdditionalServices_Id(Integer additionalServiceID);
+
     Page<Trip> findAll(Pageable page);
 
     List<Trip> findByAvailable( boolean available);

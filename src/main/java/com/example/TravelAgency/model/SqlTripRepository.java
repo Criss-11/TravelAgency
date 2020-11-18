@@ -12,5 +12,7 @@ import java.util.List;
  @Override
  @Query(nativeQuery = true, value = "select count(*)>0 from trips where id=:id")
  boolean existsById(@Param("id") Integer id);
+ @Override
+ boolean existsByAvailableIsFalseAndAdditionalServices_Id(Integer additionalServiceID);
 }
 
