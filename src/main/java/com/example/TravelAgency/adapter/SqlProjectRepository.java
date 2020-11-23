@@ -1,5 +1,7 @@
 package com.example.TravelAgency.adapter;
 
+import com.example.TravelAgency.model.Project;
+import com.example.TravelAgency.model.ProjectRepository;
 import com.example.TravelAgency.model.TripAdditionalServices;
 import com.example.TravelAgency.model.TripAdditionalServicesRepository;
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -9,11 +11,10 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 
 @RestController
-public interface SqlTripAdditionalServicesRepository extends TripAdditionalServicesRepository, JpaRepository<TripAdditionalServices, Integer>{
+public interface SqlProjectRepository extends ProjectRepository, JpaRepository<Project, Integer>{
     @Override
-    @Query("from TripAdditionalServices g join fetch g.trips")
-    List<TripAdditionalServices> findAll();
+    @Query("from Project p join fetch p.steps")
+    List<Project> findAll();
 
-    @Override
-    boolean existsByAvailableIsFalseAndProject_Id(Integer projectId);
+
 }

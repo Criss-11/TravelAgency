@@ -17,6 +17,17 @@ public class TripAdditionalServices {
     private boolean available;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "additionalServices")
     private Set<Trip> trips;
+    @ManyToOne
+    @JoinColumn(name = "project_id")
+    private Project project;
+
+    public Project getProject() {
+        return project;
+    }
+
+    public void setProject(Project project) {
+        this.project = project;
+    }
 
     public Set<Trip> getTrips() {
         return trips;

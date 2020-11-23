@@ -9,4 +9,6 @@ public interface TripAdditionalServicesRepository {
     Optional<TripAdditionalServices> findById(Integer id);
 
     TripAdditionalServices save (TripAdditionalServices entity);
+
+    boolean existsByAvailableIsFalseAndProject_Id(Integer projectId);
 }
