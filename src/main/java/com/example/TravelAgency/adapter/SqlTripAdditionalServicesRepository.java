@@ -11,7 +11,7 @@ import java.util.List;
 @RestController
 public interface SqlTripAdditionalServicesRepository extends TripAdditionalServicesRepository, JpaRepository<TripAdditionalServices, Integer>{
     @Override
-    @Query("from TripAdditionalServices g join fetch g.trips")
+    @Query("select distinct g from TripAdditionalServices g join fetch g.trips")
     List<TripAdditionalServices> findAll();
 
     @Override
