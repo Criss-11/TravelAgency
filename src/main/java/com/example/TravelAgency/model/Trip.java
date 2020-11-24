@@ -41,7 +41,13 @@ public class Trip {
         this.departure = departure;
     }
 
-    public Trip() {
+    Trip() {
+    }
+    public Trip(String destination, String description, int price, LocalDateTime departure){
+        this.destination=destination;
+        this.description=description;
+        this.price=price;
+        this.departure=departure;
     }
 
     public int getId() {
