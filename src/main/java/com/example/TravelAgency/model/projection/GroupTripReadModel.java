@@ -2,11 +2,11 @@ package com.example.TravelAgency.model.projection;
 
 import com.example.TravelAgency.model.Trip;
 
-public class AdditionalServicesTripReadModel {
+public class GroupTripReadModel {
     private String description;
     private boolean available;
 
-    AdditionalServicesTripReadModel(Trip source){
+   public GroupTripReadModel(Trip source){
         description=source.getDescription();
         available=source.isAvailable();
     }

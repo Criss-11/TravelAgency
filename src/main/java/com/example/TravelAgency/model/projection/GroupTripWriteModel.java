@@ -4,7 +4,7 @@ import com.example.TravelAgency.model.Trip;
 
 import java.time.LocalDateTime;
 
-public class AdditionalServicesTripWriteModel {
+public class GroupTripWriteModel {
     private String destination;
     private String description;
     private int price;
